@@ -19,6 +19,11 @@
                    Text="Time Elapsed: 0.0 Seconds"
                    FontSize="Large"/>
 
+            <Label x:Name="TotalMatchesFoundlbl" 
+                   FontSize="Large"
+                   BackgroundColor="HotPink"
+                   IsVisible="False"/>
+
             <FlexLayout x:Name="AnimalButtons" Wrap="Wrap" MaximumWidthRequest="400"
                         IsVisible="False">
                 
