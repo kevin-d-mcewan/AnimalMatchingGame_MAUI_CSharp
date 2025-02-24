@@ -1,0 +1,13 @@
+﻿Things to Work on...
+
+- Add a way to keep track of players best times
+
+- Add more animal/tiles in the game
+	- Have a way to chose to play either a 16 tile game, 24, 32 or 8 tile game
+
+- Add a Home screen for this 
+
+- Add an options screen to chose which amount of tiles will be played
+
+- Have Time count down instead of up
+	- Have different timer times to race your self.

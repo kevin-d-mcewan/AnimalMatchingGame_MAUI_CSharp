@@ -21,7 +21,7 @@
                 "🐰", "🐰",
                 "🦊", "🦊",
                 "🐺", "🐺",
-                "🐌", "🐌",
+                "🐱‍👤", "🐱‍👤",
                 "🦚", "🦚"
                 ];
 
@@ -32,6 +32,41 @@
                 button.Text = nextEmoji;
                 animalEmoji.RemoveAt( index );
             }
+
+            // Start a timer
+            Dispatcher.StartTimer( TimeSpan.FromSeconds( .1 ) , TimerTick );
+        }
+
+        int tenthsOfASecondElapsed = 0;
+
+        private bool TimerTick( )
+        {
+            // This is for if you close app, the timer could still tick after the 'TImerElapsed' label
+            // disppears, which could cause an error. This keeps it from happening
+            if ( !this.IsLoaded )
+                return false;
+
+            // Increment tenthsOfASecondElapsed every 10th a second. Adding 1 to field that keeps track
+            // of how many have elapsed
+            tenthsOfASecondElapsed++;
+
+            // This stmnt updates the 'TimeElapsed' lbl w/ the latest time, diving the 10ths of
+            // a second by 10 to convert it to seconds
+            TimeElapsed.Text = "Time elapsed: " + ( tenthsOfASecondElapsed / 10F ).ToString( "0.0s" );
+
+            /* If 'PlayAgainBtn' is visible again, that means the game is over and the timer can stop
+             running. The "if" statement runs the next two statements only if the game is running */
+            if ( PlayAgainButton.IsVisible )
+            {
+                // We need to reset the 10ths of sec counter; To start at 0 next game
+                tenthsOfASecondElapsed = 0;
+                // This stmnt causes the timer to stop, and no other statements in the method
+                // gets executed
+                return false;
+            }
+            /* This stmnt is only executed if the 'if' statement didn't find the "Play Again?" btn
+              visible. It tells the timer to keep running*/
+            return true;
         }
 
         Button lastClicked;
